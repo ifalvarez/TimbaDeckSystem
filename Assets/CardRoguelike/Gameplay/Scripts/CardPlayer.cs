@@ -5,7 +5,7 @@ using Timba.Players;
 /// <summary>
 /// Card player implementation for CardRoguelike.
 /// This class has:
-/// - All the zone the player owns
+/// - All the zones the player owns
 /// - Common operations the player can perform
 /// </summary>
 public class CardPlayer : Player {

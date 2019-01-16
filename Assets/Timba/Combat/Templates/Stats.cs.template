@@ -1,0 +1,34 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+
+/// <summary>
+/// The full stats table of a combatant.
+/// </summary>
+[System.Serializable]
+public struct Stats {
+{% for statName in statNames -%}
+	public Stat {{ statName }};
+{% endfor -%}
+	
+	public Stats({% for statName in statNames -%} Stat {{ statName }}{% if forloop.last == false %},{% endif -%} {% endfor -%}) {
+{% for statName in statNames -%}
+		this.{{ statName }} = {{ statName }};
+{% endfor -%}
+    }
+
+    public static Stats operator +(Stats a, Stats b) {
+{% for statName in statNames -%}
+		a.{{ statName }} += b.{{ statName }};
+{% endfor -%}
+        return a;
+    }
+
+    public static Stats operator -(Stats a, Stats b) {
+{% for statName in statNames -%}
+		a.{{ statName }} -= b.{{ statName }};
+{% endfor -%}
+        return a;
+    }
+
+	public static Stats zero = new Stats({% for statName in statNames -%} Stat.zero{% if forloop.last == false %},{% endif -%} {% endfor -%});
+}

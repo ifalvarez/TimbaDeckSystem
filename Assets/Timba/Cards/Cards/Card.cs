@@ -1,14 +1,14 @@
 ﻿using System;
 
 namespace Timba.Cards {
-
-    public class Card {
+    public abstract class Card {
         public string id;
         public string name;
+        public bool needsTarget;
         
         /// <summary>
-    /// Triggered when any card is played
-    /// </summary>
+        /// Triggered when any card is played
+        /// </summary>
         public static event Action<Card> OnCardPlayed;
 
         /// <summary>
@@ -49,19 +49,16 @@ namespace Timba.Cards {
         /// <summary>
         /// Plays a card
         /// </summary>
-        public void Play() {
+        public void Play(object[] targets) {
             if (OnCardPlayed != null) {
                 OnCardPlayed(this);
             }
             if (OnPlay != null) {
                 OnPlay(this);
             }
-        }
 
-        /// <summary>
-        /// Resolves a card
-        /// </summary>
-        public void Resolve() {
+            Execute(targets);
+
             if (OnCardResolved != null) {
                 OnCardResolved(this);
             }
@@ -70,6 +67,15 @@ namespace Timba.Cards {
             }
         }
 
+        public void Play(object target) {
+            Play(new object[] { target });
+        }
+        
+        /// <summary>
+        /// Should implement this card effect
+        /// </summary>
+        abstract public void Execute(object[] targets);
+        
         /// <summary>
         /// Discard a card
         /// </summary>
@@ -93,6 +99,7 @@ namespace Timba.Cards {
                 OnDestroy(this);
             }
         }
+
     }
 
 }
