@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardView : MonoBehaviour
-{
-    
+namespace Timba.Cards {
+    public class CardView : MonoBehaviour {
+        public Card card;
+    }
 }
