@@ -1,10 +1,13 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Timba.Cards {
-    public abstract class Card {
+    [Serializable]
+    public class Card : ISerializationCallbackReceiver {
         public string id;
         public string name;
         public bool needsTarget;
+        public CardBehaviour[] behaviours;
         
         /// <summary>
         /// Triggered when any card is played
@@ -70,11 +73,15 @@ namespace Timba.Cards {
         public void Play(object target) {
             Play(new object[] { target });
         }
-        
+
         /// <summary>
         /// Should implement this card effect
         /// </summary>
-        abstract public void Execute(object[] targets);
+        public void Execute(object[] targets) {
+            for(int i=0; i < behaviours.Length; i++) {
+                behaviours[i].Execute(this, targets);
+            }
+        }
         
         /// <summary>
         /// Discard a card
@@ -100,6 +107,34 @@ namespace Timba.Cards {
             }
         }
 
+        #region CustomSerialization
+
+        [SerializeField]
+        public SerializableCardBehaviour[] serializableBehaviours = new SerializableCardBehaviour[0];
+
+        public void OnBeforeSerialize() {
+            serializableBehaviours = new SerializableCardBehaviour[behaviours.Length];
+            for(int i = 0; i < behaviours.Length; i++) {
+                if(behaviours[i] != null) {
+                    serializableBehaviours[i] = new SerializableCardBehaviour() {
+                        type = behaviours[i].GetType().FullName,
+                        parameters = behaviours[i].Parameters
+                    };
+                }
+            }
+        }
+
+        public void OnAfterDeserialize() {
+            behaviours = new CardBehaviour[serializableBehaviours.Length];
+            for (int i = 0; i < serializableBehaviours.Length; i++) {
+                Type type = Type.GetType(serializableBehaviours[i].type);
+                if(type != null) {
+                    behaviours[i] = (CardBehaviour) Activator.CreateInstance(type);
+                    behaviours[i].Parameters = serializableBehaviours[i].parameters;    
+                }
+            }
+        }
+        #endregion
     }
 
 }

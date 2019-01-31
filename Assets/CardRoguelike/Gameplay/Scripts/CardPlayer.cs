@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Timba.Cards;
 using Timba.Players;
 
@@ -8,6 +9,7 @@ using Timba.Players;
 /// - All the zones the player owns
 /// - Common operations the player can perform
 /// </summary>
+[Serializable]
 public class CardPlayer : Player {
     public CardZone hand;
     public CardStack drawPile;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Timba.Cards;
 using UnityEngine;
@@ -10,6 +11,7 @@ using UnityEngine;
 /// - The enemies
 /// - The relics in play
 /// </summary>
+[Serializable]
 public class Board 
 {
     public CardPlayer player;

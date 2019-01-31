@@ -11,10 +11,6 @@ namespace Timba.Cards {
         private Vector2 mousePivot;
         private Vector2 originalPosition;
 
-        private void Start() {
-            card = new DebugCard();
-        }
-
         public void OnMouseDown() {
             originalPosition = transform.position;
             mousePivot = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -20,7 +20,7 @@ namespace Timba.Cards {
             // Show hand
             foreach (Card card in board.player.hand.cards) {
                 CardView cardView = Instantiate(cardViewPrefab, handTransform);
-                cardView.card = card;
+                cardView.Card = card;
             }
 
             // Show relics
