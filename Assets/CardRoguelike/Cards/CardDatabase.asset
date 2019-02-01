@@ -16,3 +16,6 @@ MonoBehaviour:
   - id: 0
     name: Debug Card
     needsTarget: 0
+    serializableBehaviours:
+    - type: DebugCardBehaviour
+      parameters: 

@@ -499,7 +499,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590b3f4a18a715d4bb8969bfcddd8162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  board: {}
+  board:
+    player:
+      hand:
+        cards: []
+      drawPile:
+        cards: []
+      discardPile:
+        cards: []
+      destroyedPile:
+        cards: []
   cardViewPrefab: {fileID: 2795435430280989048, guid: cf2445dc24495d74e9a6e0c948ef5088,
     type: 3}
   handTransform: {fileID: 1853074998}
@@ -957,7 +966,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d806aae1ffbdf4f99c34e513157a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  board: {}
+  database: {fileID: 11400000, guid: 6e7dbd368f9d3dc42b7a3f2a81043887, type: 2}
+  board:
+    player:
+      hand:
+        cards: []
+      drawPile:
+        cards: []
+      discardPile:
+        cards: []
+      destroyedPile:
+        cards: []
 --- !u!4 &2106936266
 Transform:
   m_ObjectHideFlags: 0

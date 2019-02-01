@@ -74,6 +74,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e964081a557b24ca27099db8552a57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  card:
+    id: 
+    name: 
+    needsTarget: 0
+    serializableBehaviours: []
   dragThresholdToPlayCards: 0.5
 --- !u!114 &2795435430280989048
 MonoBehaviour:
@@ -87,6 +92,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03230b8abb1ab654ba34759359e9446a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameText: {fileID: 3712669912016891152}
+  descriptionText: {fileID: 9159236106269830935}
+  flavorText: {fileID: 0}
+  image: {fileID: 0}
+  rarity: {fileID: 0}
+  decoration: {fileID: 0}
 --- !u!1 &4926371025439066703
 GameObject:
   m_ObjectHideFlags: 0

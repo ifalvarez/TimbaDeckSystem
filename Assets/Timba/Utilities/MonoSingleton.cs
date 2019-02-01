@@ -5,7 +5,7 @@ using UnityEngine;
 /// A singleton class for MonoBehaviour.
 /// </summary>
 /// <typeparam name="T">The type of the singleton. If the type is "FooBar", this value should be "FooBar".</typeparam>
-public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     static T instance;
     public static T Instance

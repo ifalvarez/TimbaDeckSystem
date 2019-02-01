@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 
 namespace Timba.Cards {
-
+    [Serializable]
     public class CardStack : CardZone{
         
         public Card Draw() {

@@ -4,10 +4,13 @@ using UnityEngine;
 
 namespace Timba.Cards {
     public class ViewController : MonoBehaviour {
-        public Board board;
         public CardView cardViewPrefab;
 
         public Transform handTransform;
+
+        private void Start() {
+            InitializeView();
+        }
 
         /// <summary>
         /// Takes the game state and reflects it on the view
@@ -18,7 +21,7 @@ namespace Timba.Cards {
             // Show player
 
             // Show hand
-            foreach (Card card in board.player.hand.cards) {
+            foreach (Card card in Board.Instance.player.hand.cards) {
                 CardView cardView = Instantiate(cardViewPrefab, handTransform);
                 cardView.Card = card;
             }

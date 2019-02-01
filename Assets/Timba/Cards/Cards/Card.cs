@@ -7,7 +7,7 @@ namespace Timba.Cards {
         public string id;
         public string name;
         public bool needsTarget;
-        public CardBehaviour[] behaviours;
+        public CardBehaviour[] behaviours = new CardBehaviour[0];
         
         /// <summary>
         /// Triggered when any card is played

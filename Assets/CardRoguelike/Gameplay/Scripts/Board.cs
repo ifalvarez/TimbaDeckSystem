@@ -12,7 +12,7 @@ using UnityEngine;
 /// - The relics in play
 /// </summary>
 [Serializable]
-public class Board 
+public class Board : PocoSingleton<Board>
 {
     public CardPlayer player;
     public Enemy[] enemies;
@@ -26,5 +26,11 @@ public class Board
         foreach(Enemy enemy in enemies) {
             enemy.TakeTurn();
         }
+    }
+
+    public Board() {
+        player = new CardPlayer();
+        enemies = new Enemy[0];
+        relics = new Relic[0];
     }
 }

@@ -16,6 +16,13 @@ public class CardPlayer : Player {
     public CardStack discardPile;
     public CardStack destroyedPile;
 
+    public CardPlayer() {
+        hand = new CardZone();
+        drawPile = new CardStack();
+        discardPile = new CardStack();
+        destroyedPile = new CardStack();
+    }
+
     public void Draw(int amount = 1) {
         for (int i = 0; i < amount; i++) {
             hand.Add(drawPile.Draw());
@@ -34,6 +41,7 @@ public class CardPlayer : Player {
         List<Card> cards = discardPile.RemoveAll();
         drawPile.AddRange(cards);
     }
+
 
 }
     

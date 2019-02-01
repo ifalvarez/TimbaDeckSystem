@@ -14,6 +14,9 @@ namespace Timba.Cards {
 
         private Card card;
         public Card Card {
+            get {
+                return card;
+            }
             set {
                 card = value;
                 nameText.text = card.name;

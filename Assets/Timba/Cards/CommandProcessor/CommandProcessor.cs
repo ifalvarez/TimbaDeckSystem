@@ -3,7 +3,7 @@
 /// <summary>
 /// Receives Commands, queues them and executes them in order.
 /// </summary>
-public class CommandProcessor : Singleton<CommandProcessor>
+public class CommandProcessor : MonoSingleton<CommandProcessor>
 {
     private List<Command> commands;
 
