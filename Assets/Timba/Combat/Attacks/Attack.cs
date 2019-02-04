@@ -18,7 +18,9 @@
         public event AttackAction OnApplyStatChanges;
 
 
-        public Attack() {
+        public Attack(Combatant source, Combatant target) {
+            this.source = source;
+            this.target = target;
             CopyStats();
             CalculateStatChanges();
             if (OnCalculateStatChanges != null) {

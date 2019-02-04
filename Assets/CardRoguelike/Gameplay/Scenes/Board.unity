@@ -340,6 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1290459599}
   - component: {fileID: 1290459598}
+  - component: {fileID: 1290459600}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -409,6 +410,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1290459600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290459597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46cd82f9b98b2124790bf6ff22f7e34f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    attack:
+      value: 0
+      isMinConstrained: 0
+      minValue: 0
+      isMaxConstrained: 0
+      maxValue: 0
+      timeToRegen: 0
+    hp:
+      value: 0
+      isMinConstrained: 0
+      minValue: 0
+      isMaxConstrained: 0
+      maxValue: 0
+      timeToRegen: 0
+    mp:
+      value: 0
+      isMinConstrained: 0
+      minValue: 0
+      isMaxConstrained: 0
+      maxValue: 0
+      timeToRegen: 0
+    armor:
+      value: 0
+      isMinConstrained: 0
+      minValue: 0
+      isMaxConstrained: 0
+      maxValue: 0
+      timeToRegen: 0
 --- !u!1 &1498418096
 GameObject:
   m_ObjectHideFlags: 0
