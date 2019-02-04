@@ -134,6 +134,16 @@ namespace Timba.Cards {
                 }
             }
         }
+
+        public Card Clone() {
+            Card newCard = (Card) this.MemberwiseClone();
+            newCard.behaviours = (CardBehaviour[]) this.behaviours.Clone();
+            for(int i = 0; i < behaviours.Length; i++) {
+                newCard.behaviours[i] = (CardBehaviour) Activator.CreateInstance(behaviours[i].GetType());
+                newCard.behaviours[i].Parameters = (int[]) behaviours[i].Parameters.Clone();
+            }
+            return newCard;
+        }
         #endregion
     }
 

@@ -74,11 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e964081a557b24ca27099db8552a57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card:
-    id: 
-    name: 
-    needsTarget: 0
-    serializableBehaviours: []
+  cardView: {fileID: 2795435430280989048}
   dragThresholdToPlayCards: 0.5
 --- !u!114 &2795435430280989048
 MonoBehaviour:

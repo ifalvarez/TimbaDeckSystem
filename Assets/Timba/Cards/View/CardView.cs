@@ -20,7 +20,12 @@ namespace Timba.Cards {
             set {
                 card = value;
                 nameText.text = card.name;
+                card.OnPlay += Card_OnPlay;
             }
+        }
+                
+        private void Card_OnPlay(Card card) {
+            Destroy(gameObject);
         }
     }
 }
