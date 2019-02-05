@@ -1,4 +1,6 @@
-﻿namespace Timba.Combat {
+﻿using Timba.Combat;
+
+namespace Timba.CardRoguelike {
     public class ExampleAttack : Attack {
         public Stat stats;
 

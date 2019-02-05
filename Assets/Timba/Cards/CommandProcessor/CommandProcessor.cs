@@ -5,7 +5,7 @@
 /// </summary>
 public class CommandProcessor : MonoSingleton<CommandProcessor>
 {
-    private List<Command> commands;
+    private List<Command> commands = new List<Command>();
 
     public void AddCommand(Command command) {
         commands.Add(command);
