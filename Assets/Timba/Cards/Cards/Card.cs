@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Timba.Cards {
@@ -111,13 +112,13 @@ namespace Timba.Cards {
 
         [SerializeField]
         public SerializableCardBehaviour[] serializableBehaviours = new SerializableCardBehaviour[0];
-
+        
         public void OnBeforeSerialize() {
             serializableBehaviours = new SerializableCardBehaviour[behaviours.Length];
             for(int i = 0; i < behaviours.Length; i++) {
                 if(behaviours[i] != null) {
                     serializableBehaviours[i] = new SerializableCardBehaviour() {
-                        type = behaviours[i].GetType().FullName,
+                        type = behaviours[i].GetType().Name,
                         parameters = behaviours[i].Parameters
                     };
                 }
@@ -126,15 +127,16 @@ namespace Timba.Cards {
 
         public void OnAfterDeserialize() {
             behaviours = new CardBehaviour[serializableBehaviours.Length];
-            for (int i = 0; i < serializableBehaviours.Length; i++) {
-                Type type = Type.GetType(serializableBehaviours[i].type);
-                if(type != null) {
+            if(AvailableCardBehaviours.availableTypes != null) {
+                for (int i = 0; i < serializableBehaviours.Length; i++) {
+                    Type type = AvailableCardBehaviours.availableTypes.Where(x => x.Name == serializableBehaviours[i].type).First();
                     behaviours[i] = (CardBehaviour) Activator.CreateInstance(type);
-                    behaviours[i].Parameters = serializableBehaviours[i].parameters;    
+                    behaviours[i].Parameters = serializableBehaviours[i].parameters;
+                    //Debug.LogFormat("Created behaviour: {0}", behaviours[i].GetType().Name);
                 }
             }
         }
-
+        
         public Card Clone() {
             Card newCard = (Card) this.MemberwiseClone();
             newCard.behaviours = (CardBehaviour[]) this.behaviours.Clone();

@@ -54,6 +54,7 @@ namespace Timba.Combat {
             regenTimer = 0;
         }
 
+        // Stat / Stat operations
         public static Stat operator +(Stat a, Stat b) {
             a.Value += b.Value;
             return a;
@@ -64,6 +65,9 @@ namespace Timba.Combat {
             return a;
         }
 
+        // Stat / float and Stat / int operations
+        // This are not commutative, not even the sum.
+        // Will always return the type of the first operand
         public static Stat operator +(Stat a, float b) {
             a.Value += b;
             return a;
@@ -100,6 +104,7 @@ namespace Timba.Combat {
             return a - (int)b.Value;
         }
 
+        // Implicit asignment operators
         public static implicit operator float(Stat a) {
             return a.Value;
         }
@@ -108,6 +113,7 @@ namespace Timba.Combat {
             return (int)a.Value;
         }
 
+        // Static common values
         public static Stat zero = new Stat(0);
     }
 }

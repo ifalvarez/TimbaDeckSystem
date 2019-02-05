@@ -19,3 +19,9 @@ MonoBehaviour:
     serializableBehaviours:
     - type: DebugCardBehaviour
       parameters: 
+  - id: 0
+    name: Strike
+    needsTarget: 1
+    serializableBehaviours:
+    - type: AttackCardBehaviour
+      parameters: 06000000

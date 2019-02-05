@@ -3,8 +3,8 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-public class AttackEditor {
-    public static string statsClassTemplate = "Assets/Timba/Combat/Attacks/AttackTemplate.cs.template";
+public class AttackCreator {
+    public static string statsClassTemplate = "Assets/Timba/Combat/Attacks/Editor/AttackTemplate.cs.template";
 
     [MenuItem("Assets/Create/Timba/Combat/Attack Script")]
     public static void SelectFileName() {
@@ -43,7 +43,7 @@ public class AttackEditorPopupWindow : EditorWindow {
         className = EditorGUILayout.TextField(editorWindowText, className);
 
         if (GUILayout.Button("Create class")) {
-            AttackEditor.CreateAttackScript(className);
+            AttackCreator.CreateAttackScript(className);
             Close();
         }
     }

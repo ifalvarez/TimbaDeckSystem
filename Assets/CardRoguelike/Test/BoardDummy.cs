@@ -10,7 +10,7 @@ public class BoardDummy : MonoBehaviour
     private void Awake() {
         Board.Instance = new Board();
         for (int i = 0; i < 5; i++) {
-            Board.Instance.player.hand.Add(database.cards[0].Clone());
+            Board.Instance.player.hand.Add(database.cards[1].Clone());
         }
     }
 

@@ -1,0 +1,14 @@
+﻿using System;
+using Timba.Cards;
+
+public class {{ className }} : CardBehaviour
+{
+    public int[] Parameters { get; set; }
+
+    /// <summary>
+    /// Implements this effect behaviour
+    /// </summary>
+    public void Execute(Card card, object[] targets) {
+		
+    }
+}
