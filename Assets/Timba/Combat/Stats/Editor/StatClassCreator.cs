@@ -4,12 +4,12 @@ using System;
 using System.IO;
 using DotLiquid;
 
-namespace Timba {
+namespace Timba.Combat {
 
     public class StatClassCreator
     {
-        public static string statsClassPath = "Assets/Timba/Combat/Scripts/Stats.cs";
-        public static string statsClassTemplate = "Assets/Timba/Combat/Templates/Stats.cs.template";
+        public static string statsClassPath = "Assets/Timba/Combat/Stats/Stats.cs";
+        public static string statsClassTemplate = "Assets/Timba/Combat/Stats/Templates/Stats.cs.template";
         public static string[] statNames = { "hp", "mp", "attack", "armor", "magic", "resistance", "critChance", "critDamage" };
 
         public static void Create()
@@ -32,6 +32,7 @@ namespace Timba {
                 outfile.Write(fileContent);
             }
             AssetDatabase.Refresh();
+            Debug.Log("Stats script created at: " + statsClassPath);
         }
     }
 

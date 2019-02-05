@@ -10,7 +10,7 @@ namespace Timba.Cards {
         public void Execute(Card card, object[] targets) {
             Combatant[] combatants = targets.Select(x => ((MonoBehaviour)x).GetComponent<Combatant>()).ToArray();
             foreach (Combatant combatant in combatants) {
-                AttackPhysical attack = new AttackPhysical(combatant, combatant);
+                ExampleAttack attack = new ExampleAttack(combatant, combatant);
             }
         }
     }
