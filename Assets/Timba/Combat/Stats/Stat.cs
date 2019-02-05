@@ -64,8 +64,48 @@ namespace Timba.Combat {
             return a;
         }
 
+        public static Stat operator +(Stat a, float b) {
+            a.Value += b;
+            return a;
+        }
+
+        public static float operator +(float a, Stat b) {
+            return a + b.value;
+        }
+
+        public static Stat operator -(Stat a, float b) {
+            a.Value -= b;
+            return a;
+        }
+
+        public static float operator -(float a, Stat b) {
+            return a - b.Value;
+        }
+
+        public static Stat operator +(Stat a, int b) {
+            a.Value += b;
+            return a;
+        }
+
+        public static int operator +(int a, Stat b) {
+            return a + (int)b.value;
+        }
+
+        public static Stat operator -(Stat a, int b) {
+            a.Value -= b;
+            return a;
+        }
+
+        public static int operator -(int a, Stat b) {
+            return a - (int)b.Value;
+        }
+
         public static implicit operator float(Stat a) {
             return a.Value;
+        }
+
+        public static implicit operator int(Stat a) {
+            return (int)a.Value;
         }
 
         public static Stat zero = new Stat(0);

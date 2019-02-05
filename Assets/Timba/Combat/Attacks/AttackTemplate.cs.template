@@ -1,8 +1,6 @@
 ﻿using Timba.Combat;
 
 public class {{ className }} : Attack {
-    public Stat stats;
-
     public {{ className }}(Combatant source, Combatant target) : base(source, target) { }
 
     public override void CalculateStatChanges() {

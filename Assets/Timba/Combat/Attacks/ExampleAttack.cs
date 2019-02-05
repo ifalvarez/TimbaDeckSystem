@@ -1,7 +1,5 @@
 ﻿namespace Timba.Combat {
     public class ExampleAttack : Attack {
-        public Stat stats;
-
         public ExampleAttack(Combatant source, Combatant target) : base(source, target) { }
 
         public override void CalculateStatChanges() {
