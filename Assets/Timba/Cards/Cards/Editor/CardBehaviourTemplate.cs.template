@@ -11,4 +11,11 @@ public class {{ className }} : CardBehaviour
     public void Execute(Card card, object[] targets) {
 		
     }
+
+	public string Description {
+        get {
+            // Implement the description of this behaviour here
+			return "Deals 777 damage or something";
+        }
+    }
 }

@@ -10,11 +10,17 @@ namespace Timba.Cards {
         public float dragThresholdToPlayCards;
         private Vector2 mousePivot;
         private Vector2 originalPosition;
-        public LayerMask layerMask;
 
+        private LayerMask playerLayerMask;
+        private LayerMask enemyLayerMask;
+        private LayerMask layerMask;
+        
         private void Awake() {
+            //TODO: send this to a singleton or make it constant
+            playerLayerMask = LayerMask.NameToLayer("player");
+            enemyLayerMask = LayerMask.NameToLayer("enemy");
+            layerMask = LayerMask.GetMask(new string[]{ "player", "enemy"});
             cardView = GetComponent<CardView>();
-            //layerMask = LayerMask.NameToLayer("player") & LayerMask.NameToLayer("enemy");
         }
 
         public void OnMouseDown() {
@@ -28,24 +34,26 @@ namespace Timba.Cards {
         }
 
         public void OnMouseUp() {
-            if (cardView.Card.needsTarget) {
+            // Acquire targets
+            object[] targets = null;
+            if (cardView.Card.targetMask != TargetMask.none) {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 Debug.DrawLine(ray.origin, ray.origin + ray.direction * 20, Color.green, 10);
-                RaycastHit2D raycastHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, layerMask);
-                EnemyView enemy = raycastHit.collider.GetComponent<EnemyView>();
-                if (enemy != null) {
-                    cardView.Card.Play(enemy);
-                } else {
-                    transform.position = originalPosition;
-                }
-            } else {
-                if (Camera.main.ScreenToViewportPoint(Input.mousePosition).y > dragThresholdToPlayCards) {
-                    cardView.Card.Play(null);
-                } else {
-                    transform.position = originalPosition;
+                Collider2D collider = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, layerMask).collider;
+                if (collider != null && (
+                        ((collider.gameObject.layer == enemyLayerMask || collider.gameObject.layer == playerLayerMask) && cardView.Card.targetMask == TargetMask.all) ||
+                        (collider.gameObject.layer == enemyLayerMask && cardView.Card.targetMask == TargetMask.enemy) ||
+                        (collider.gameObject.layer == playerLayerMask && cardView.Card.targetMask == TargetMask.player))) {
+                    targets = new object[] { collider.gameObject };
                 }
             }
 
+            // Play card 
+            if (targets != null || (cardView.Card.targetMask == TargetMask.player && Camera.main.ScreenToViewportPoint(Input.mousePosition).y > dragThresholdToPlayCards)) {
+                cardView.Card.Play(targets);
+            } else {
+                transform.position = originalPosition;
+            }
         }
     }
 }

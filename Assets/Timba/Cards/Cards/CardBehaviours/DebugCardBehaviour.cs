@@ -12,4 +12,10 @@ public class DebugCardBehaviour : CardBehaviour
     public void Execute(Card card, object[] targets) {
         Debug.LogFormat("Executing card: {0}", card.name);
     }
+
+    public string Description {
+        get {
+            return "Logs to the console when played";
+        }
+    }
 }

@@ -20,6 +20,7 @@ namespace Timba.Cards {
             set {
                 card = value;
                 nameText.text = card.name;
+                descriptionText.text = card.Description;
                 card.OnPlay += Card_OnPlay;
             }
         }

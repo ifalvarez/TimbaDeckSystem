@@ -7,7 +7,19 @@ namespace Timba.Cards {
     public class Card : ISerializationCallbackReceiver {
         public string id;
         public string name;
-        public bool needsTarget;
+        [SerializeField]
+        private string description = "";
+        public string Description {
+            get {
+                string fullDescription = description;
+                foreach(CardBehaviour b in behaviours) {
+                    fullDescription += string.Format("\n{0}", b.Description);
+                }
+                return fullDescription;
+            }
+        }
+
+        public TargetMask targetMask;
         public CardBehaviour[] behaviours = new CardBehaviour[0];
         
         /// <summary>
