@@ -49,7 +49,7 @@ namespace Timba.Cards {
             }
 
             // Play card 
-            if (targets != null || (cardView.Card.targetMask == TargetMask.player && Camera.main.ScreenToViewportPoint(Input.mousePosition).y > dragThresholdToPlayCards)) {
+            if (targets != null || (cardView.Card.targetMask == TargetMask.none && Camera.main.ScreenToViewportPoint(Input.mousePosition).y > dragThresholdToPlayCards)) {
                 cardView.Card.Play(targets);
             } else {
                 transform.position = originalPosition;

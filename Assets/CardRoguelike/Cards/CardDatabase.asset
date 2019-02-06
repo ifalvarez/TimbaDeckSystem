@@ -15,13 +15,15 @@ MonoBehaviour:
   cards:
   - id: 0
     name: Debug Card
-    needsTarget: 0
+    description: 
+    targetMask: 0
     serializableBehaviours:
     - type: DebugCardBehaviour
       parameters: 
   - id: 0
     name: Strike
-    needsTarget: 1
+    description: 
+    targetMask: 1
     serializableBehaviours:
     - type: AttackCardBehaviour
       parameters: 06000000

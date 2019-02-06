@@ -17,7 +17,6 @@
         public event AttackAction OnCalculateStatChanges;
         public event AttackAction OnApplyStatChanges;
 
-
         public Attack(Combatant source, Combatant target) {
             this.source = source;
             this.target = target;

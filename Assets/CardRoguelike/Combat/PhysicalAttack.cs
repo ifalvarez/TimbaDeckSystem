@@ -9,7 +9,7 @@ namespace Timba.CardRoguelike {
     public class PhysicalAttack : Attack {
         public int damage;
 
-        public PhysicalAttack(int damage, Combatant source, Combatant target) : base(source, target) {
+        public PhysicalAttack(Combatant source, Combatant target, int damage) : base(source, target) {
             this.damage = damage;
             if(damage < 0) {
                 Debug.LogErrorFormat("Damage cant be negative, current: {0}", damage);
