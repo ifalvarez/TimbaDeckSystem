@@ -3,7 +3,7 @@ using Timba.Combat;
 using UnityEngine;
 
 public class TestWeapon : MonoBehaviour {
-    public Attack attackPrefab;
+    public StatChanger attackPrefab;
 
     private void OnCollisionEnter2D(Collision2D collision) {
         Combatant target = collision.collider.GetComponentInChildren<Combatant>();

@@ -1,10 +1,10 @@
 using Timba.Combat;
 using UnityEngine;
 
-public class DefendAttack : Attack {
+public class Defend : StatChanger {
     int armor;
 
-    public DefendAttack(Combatant source, Combatant target, int armor) : base(source, target) {
+    public Defend(Combatant source, Combatant target, int armor) : base(source, target) {
         this.armor = armor;
     }
 

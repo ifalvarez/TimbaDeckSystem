@@ -9,7 +9,7 @@ public class DefendCardBehaviour : CardBehaviour
     /// Implements this effect behaviour
     /// </summary>
     public void Execute(Card card, object[] targets) {
-        new DefendAttack(CombatHelper.Instance.playerCombatant, CombatHelper.Instance.playerCombatant, Parameters[0]).Execute();
+        new Defend(CombatHelper.Instance.playerCombatant, CombatHelper.Instance.playerCombatant, Parameters[0]).Execute();
     }
 
 	public string Description {

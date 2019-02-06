@@ -15,6 +15,9 @@ public class HorizontalCurvedLayout : MonoBehaviour
         xPosition = xPosition * cellWidth / -2;
         for (int i = 0; i < transform.childCount; i++) {
             float percentage = (float)i / (float)(transform.childCount - 1);
+            if(i==0 && transform.childCount == 1) {
+                percentage = 0.5f;
+            }
             float y = curve.Evaluate(percentage) * height;
             transform.GetChild(i).position = Vector2.MoveTowards(
                 transform.GetChild(i).position,

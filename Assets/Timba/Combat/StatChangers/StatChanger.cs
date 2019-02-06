@@ -1,5 +1,5 @@
 ﻿namespace Timba.Combat {
-    public abstract class Attack {
+    public abstract class StatChanger {
 
         public Combatant source;
         public Combatant target;
@@ -17,7 +17,7 @@
         public event AttackAction OnCalculateStatChanges;
         public event AttackAction OnApplyStatChanges;
 
-        public Attack(Combatant source, Combatant target) {
+        public StatChanger(Combatant source, Combatant target) {
             this.source = source;
             this.target = target;
             CopyStats();

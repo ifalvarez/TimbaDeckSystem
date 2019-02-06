@@ -6,10 +6,10 @@ namespace Timba.CardRoguelike {
     /// Adds the attack damage and the source strength.
     /// Substrats the total from the armor of the target first, then from his hp
     /// </summary>
-    public class PhysicalAttack : Attack {
+    public class Attack : StatChanger {
         public int damage;
 
-        public PhysicalAttack(Combatant source, Combatant target, int damage) : base(source, target) {
+        public Attack(Combatant source, Combatant target, int damage) : base(source, target) {
             this.damage = damage;
             if(damage < 0) {
                 Debug.LogErrorFormat("Damage cant be negative, current: {0}", damage);
