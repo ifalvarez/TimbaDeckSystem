@@ -127,13 +127,11 @@ namespace Timba.Cards {
 
         public void OnAfterDeserialize() {
             behaviours = new CardBehaviour[serializableBehaviours.Length];
-            if(AvailableCardBehaviours.availableTypes != null) {
-                for (int i = 0; i < serializableBehaviours.Length; i++) {
-                    Type type = AvailableCardBehaviours.availableTypes.Where(x => x.Name == serializableBehaviours[i].type).First();
-                    behaviours[i] = (CardBehaviour) Activator.CreateInstance(type);
-                    behaviours[i].Parameters = serializableBehaviours[i].parameters;
-                    //Debug.LogFormat("Created behaviour: {0}", behaviours[i].GetType().Name);
-                }
+            for (int i = 0; i < serializableBehaviours.Length; i++) {
+                Type type = AvailableCardBehaviours.AvailableTypes.Where(x => x.Name == serializableBehaviours[i].type).First();
+                behaviours[i] = (CardBehaviour) Activator.CreateInstance(type);
+                behaviours[i].Parameters = serializableBehaviours[i].parameters;
+                //Debug.LogFormat("Created behaviour: {0}", behaviours[i].GetType().Name);
             }
         }
         

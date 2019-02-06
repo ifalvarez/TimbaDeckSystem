@@ -12,6 +12,7 @@ namespace Timba.CardRoguelike {
             Combatant[] enemyCombatants = targets.Select(x => ((MonoBehaviour)x).GetComponent<Combatant>()).ToArray();
             foreach (Combatant enemyCombatant in enemyCombatants) {
                 PhysicalAttack attack = new PhysicalAttack(Parameters[0], CombatHelper.Instance.playerCombatant, enemyCombatant);
+                attack.Execute();
             }
         }
     }

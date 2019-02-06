@@ -22,6 +22,9 @@
             this.source = source;
             this.target = target;
             CopyStats();
+        }
+
+        public void Execute() { 
             CalculateStatChanges();
             if (OnCalculateStatChanges != null) {
                 OnCalculateStatChanges();

@@ -76,6 +76,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardView: {fileID: 2795435430280989048}
   dragThresholdToPlayCards: 0.5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!114 &2795435430280989048
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,9 +10,11 @@ namespace Timba.Cards {
         public float dragThresholdToPlayCards;
         private Vector2 mousePivot;
         private Vector2 originalPosition;
+        public LayerMask layerMask;
 
         private void Awake() {
             cardView = GetComponent<CardView>();
+            //layerMask = LayerMask.NameToLayer("player") & LayerMask.NameToLayer("enemy");
         }
 
         public void OnMouseDown() {
@@ -28,7 +30,9 @@ namespace Timba.Cards {
         public void OnMouseUp() {
             if (cardView.Card.needsTarget) {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                EnemyView enemy = Physics2D.Raycast(ray.origin, ray.direction).collider.GetComponent<EnemyView>();
+                Debug.DrawLine(ray.origin, ray.origin + ray.direction * 20, Color.green, 10);
+                RaycastHit2D raycastHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, layerMask);
+                EnemyView enemy = raycastHit.collider.GetComponent<EnemyView>();
                 if (enemy != null) {
                     cardView.Card.Play(enemy);
                 } else {
