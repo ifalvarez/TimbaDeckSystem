@@ -1,7 +1,7 @@
 using System;
 using Timba.Cards;
 
-public class DefendCardBehaviour : CardBehaviour
+public class DrawCardBehaviour : CardBehaviour
 {
     public int[] Parameters { get; set; }
 
@@ -9,13 +9,13 @@ public class DefendCardBehaviour : CardBehaviour
     /// Implements this effect behaviour
     /// </summary>
     public void Execute(Card card, object[] targets) {
-        new Defend(Helper.Instance.playerCombatant, Helper.Instance.playerCombatant, Parameters[0]).Execute();
+        Board.Instance.player.Draw(Parameters[0]);
     }
 
 	public string Description {
         get {
             // Implement the description of this behaviour here
-			return string.Format("Gain {0} armor", Parameters[0]);
+			return string.Format("Draw {0} cards", Parameters[0]);
         }
     }
 }

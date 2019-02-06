@@ -20,10 +20,24 @@ MonoBehaviour:
     serializableBehaviours:
     - type: DebugCardBehaviour
       parameters: 
-  - id: 0
-    name: Strike
+  - id: 1
+    name: Attack
     description: 
     targetMask: 1
     serializableBehaviours:
     - type: AttackCardBehaviour
       parameters: 06000000
+  - id: 2
+    name: Defend
+    description: 
+    targetMask: 0
+    serializableBehaviours:
+    - type: DefendCardBehaviour
+      parameters: 05000000
+  - id: 3
+    name: Draw
+    description: 
+    targetMask: 0
+    serializableBehaviours:
+    - type: DrawCardBehaviour
+      parameters: 01000000

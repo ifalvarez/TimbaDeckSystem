@@ -5,13 +5,23 @@ namespace Timba.Cards {
     [Serializable]
     public class CardZone {
         public List<Card> cards;
+        public bool isDiscardZone;
+        public bool isDestroyZone;
 
+        public event Action<Card> OnAdd;
+        public event Action<Card> OnRemove;
+                
         public CardZone() {
             cards = new List<Card>();
         }
 
         public void Add(Card card) {
             cards.Add(card);
+            OnAdd?.Invoke(card);
+            if (isDiscardZone)
+                card.Discarded();
+            if (isDestroyZone)
+                card.Destroyed();
         }
 
         public void AddRange(List<Card> cardsToAdd) {
@@ -20,6 +30,7 @@ namespace Timba.Cards {
 
         public Card Remove(Card card) {
             cards.Remove(card);
+            OnRemove?.Invoke(card);
             return card;
         }
 
@@ -79,6 +90,16 @@ namespace Timba.Cards {
         /// <param name="targetZone"></param>
         public void Move(List<Card> cardsToMove, CardZone targetZone) {
             foreach (Card card in cardsToMove) {
+                Move(card, targetZone);
+            }
+        }
+
+        /// <summary>
+        /// Move all the cards in this zone to targetZone
+        /// </summary>
+        /// <param name="targetZone"></param>
+        public void MoveAll(CardZone targetZone) {
+            foreach (Card card in cards) {
                 Move(card, targetZone);
             }
         }

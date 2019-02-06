@@ -18,9 +18,9 @@ public class CardPlayer : Player {
 
     public CardPlayer() {
         hand = new CardZone();
-        drawPile = new CardStack();
-        discardPile = new CardStack();
-        destroyedPile = new CardStack();
+        drawPile = new CardStack() { resuplyFrom = discardPile };
+        discardPile = new CardStack() { isDiscardZone = true };
+        destroyedPile = new CardStack() { isDestroyZone = true };
     }
 
     public void Draw(int amount = 1) {
@@ -29,6 +29,10 @@ public class CardPlayer : Player {
         }
     }
     
+    public void Discard(Card card) {
+        hand.Move(card, discardPile);
+    }
+
     public void DiscardRandom() {
         hand.MoveRandom(discardPile);
     }
@@ -36,13 +40,6 @@ public class CardPlayer : Player {
     public Card RandomCardFromHand() {
         return hand.cards.RandomItem();
     }
-
-    public void ShuffleDiscardInDraw() {
-        List<Card> cards = discardPile.RemoveAll();
-        drawPile.AddRange(cards);
-    }
-
-
 }
     
 

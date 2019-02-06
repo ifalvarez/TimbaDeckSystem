@@ -11,7 +11,7 @@ namespace Timba.CardRoguelike {
         public void Execute(Card card, object[] targets) {
             Combatant[] enemyCombatants = targets.Select(x => ((GameObject)x).GetComponent<Combatant>()).ToArray();
             foreach (Combatant enemyCombatant in enemyCombatants) {
-                Attack attack = new Attack(CombatHelper.Instance.playerCombatant, enemyCombatant, Parameters[0]);
+                Attack attack = new Attack(Helper.Instance.playerCombatant, enemyCombatant, Parameters[0]);
                 attack.Execute();
             }
         }

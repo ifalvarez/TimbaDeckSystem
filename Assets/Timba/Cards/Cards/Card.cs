@@ -99,7 +99,8 @@ namespace Timba.Cards {
         /// <summary>
         /// Discard a card
         /// </summary>
-        public void Discard() {
+        public void Discarded() {
+
             if (OnCardDiscarded != null) {
                 OnCardDiscarded(this);
             }
@@ -111,7 +112,7 @@ namespace Timba.Cards {
         /// <summary>
         /// Destroys a card
         /// </summary>
-        public void Destroy() {
+        public void Destroyed() {
             if (OnCardDestroyed != null) {
                 OnCardDestroyed(this);
             }
