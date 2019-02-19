@@ -98,7 +98,7 @@ namespace Timba.Cards {
         /// </summary>
         /// <param name="targetZone"></param>
         public void MoveAll(CardZone targetZone) {
-            foreach (Card card in cards) {
+            foreach (Card card in cards.ToArray()) {
                 Move(card, targetZone);
             }
         }

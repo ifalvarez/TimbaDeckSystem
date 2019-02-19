@@ -21,9 +21,9 @@ public class CardPlayer : Player {
 
     public CardPlayer() {
         hand = new CardZone();
-        drawPile = new CardStack() { resuplyFrom = discardPile };
         discardPile = new CardStack() { isDiscardZone = true };
         destroyedPile = new CardStack() { isDestroyZone = true };
+        drawPile = new CardStack() { resuplyFrom = discardPile };
     }
 
     public void Draw(int amount = 1) {

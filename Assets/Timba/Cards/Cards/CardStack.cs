@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Timba.Cards {
     [Serializable]
@@ -12,6 +13,7 @@ namespace Timba.Cards {
             if(cards.Count != 0) {
                 return RemoveAt(0);
             } else {
+                Debug.LogWarningFormat("No cards to draw in CardStack {0}", this);
                 return null;
             }
         }
