@@ -18,12 +18,16 @@ namespace Timba.Cards {
             }
         }
         public Transform cardContainer;
+        public GameObject cardsPanel;
+        private CardView cardPrefab;
 
         /// <summary>
         /// Instantiate the current cards in the zone and hook to the CardZone events
         /// </summary>
         void Initialize() {
-            foreach(Card card in cardZone.cards) {
+            bool isParentRectTransform = transform.GetType() == typeof(RectTransform);
+            cardPrefab = isParentRectTransform ? ViewHelper.Instance.cardViewUiPrefab : ViewHelper.Instance.cardViewSpritePrefab;
+            foreach (Card card in cardZone.cards) {
                 CardZone_OnAdd(card);
             }
             cardZone.OnAdd += CardZone_OnAdd;
@@ -31,17 +35,26 @@ namespace Timba.Cards {
         }
 
         private void CardZone_OnAdd(Card card) {
-            CardView cardView = Instantiate(ViewHelper.Instance.cardViewPrefab, cardContainer);
+            CardView cardView = Instantiate(cardPrefab, cardContainer);
             cardView.Card = card;
         }
 
         private void CardZone_OnRemove(Card card) {
-            Destroy(GetComponentsInChildren<CardView>().Where(x => x.Card == card).First().gameObject);
+            CardView cardView = cardContainer.GetComponentsInChildren<CardView>().Where(x => x.Card == card).FirstOrDefault();
+            if(cardView != null) {
+                Destroy(cardView.gameObject);
+            } else {
+                Debug.LogError("Trying to destroy a cardView but its not found");
+            }
         }
-        
-        private void OnDisable() {
+
+        private void OnDestroy() {
             cardZone.OnAdd -= CardZone_OnAdd;
             cardZone.OnRemove -= CardZone_OnRemove;
+        }
+
+        public void ToggleCardsPanel() {
+            cardsPanel.SetActive(!cardsPanel.activeSelf);
         }
     }
 }

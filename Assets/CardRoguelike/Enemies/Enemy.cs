@@ -1,11 +1,13 @@
 ﻿
+using System.Collections;
 using UnityEngine;
 
 public class Enemy 
 {
     public string name;
     
-    public void TakeTurn() {
+    public IEnumerator TakeTurn() {
         Debug.LogFormat("Enemy {0} taking its turn", name);
+        yield return null;
     }
 }

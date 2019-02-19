@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Timba.Cards {
     public class ViewHelper : MonoSingleton<ViewHelper> {
-        public CardView cardViewPrefab;
+        public CardView cardViewSpritePrefab;
+        public CardView cardViewUiPrefab;
     }
 }

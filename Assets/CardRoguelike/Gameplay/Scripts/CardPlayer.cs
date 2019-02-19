@@ -16,6 +16,9 @@ public class CardPlayer : Player {
     public CardStack discardPile;
     public CardStack destroyedPile;
 
+    public int drawPerTurn = 5;
+    public int maxHandSize = 10;
+
     public CardPlayer() {
         hand = new CardZone();
         drawPile = new CardStack() { resuplyFrom = discardPile };
@@ -33,8 +36,18 @@ public class CardPlayer : Player {
         hand.Move(card, discardPile);
     }
 
+    public void Discard(Card[] cards) {
+        foreach(Card c in cards) {
+            Discard(c);
+        }
+    }
+
     public void DiscardRandom() {
         hand.MoveRandom(discardPile);
+    }
+
+    public void DiscardAll() {
+        Discard(hand.cards.ToArray());
     }
 
     public Card RandomCardFromHand() {

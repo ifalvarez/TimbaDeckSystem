@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace Timba.Cards {
     public class CardView : MonoBehaviour {
-        public TextMeshPro nameText;
-        public TextMeshPro descriptionText;
-        public TextMeshPro flavorText;
+        public TMP_Text nameText;
+        public TMP_Text descriptionText;
+        public TMP_Text flavorText;
         public Sprite image;
         public Sprite rarity;
         public Sprite decoration;
@@ -26,7 +26,7 @@ namespace Timba.Cards {
         }
                 
         private void Card_OnPlay(Card card) {
-            Destroy(gameObject);
+            
         }
     }
 }

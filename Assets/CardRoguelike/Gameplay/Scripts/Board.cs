@@ -12,25 +12,58 @@ using UnityEngine;
 /// - The relics in play
 /// </summary>
 [Serializable]
-public class Board : PocoSingleton<Board>
+public class Board : MonoSingleton<Board>
 {
     public CardPlayer player;
     public Enemy[] enemies;
     public Relic[] relics;
+    private bool endPlayerTurn;
+    private bool isGameFinished;
+    private int turnNumber;
 
-    public IEnumerator Turn() {
-        // Player turn
-        yield return new WaitUntil(() => player.hand.cards.Count == 0);
-
-        // Enemies turn
-        foreach(Enemy enemy in enemies) {
-            enemy.TakeTurn();
-        }
-    }
-
-    public Board() {
+    protected override void OnAwake() {
         player = new CardPlayer();
         enemies = new Enemy[0];
         relics = new Relic[0];
+        Card.OnCardPlayed += Card_OnCardPlayed;
+    }
+
+    private void Card_OnCardPlayed(Card card) {
+        player.Discard(card);
+    }
+
+    private void Start() {
+        FindObjectOfType<BoardDummy>().LoadDummyDeck();
+        StartCoroutine(TurnLoop());
+    }
+
+    public IEnumerator TurnLoop() {
+        while (!isGameFinished) {
+            turnNumber++;
+            yield return StartCoroutine(Turn(turnNumber));
+        }
+        Debug.Log("Game finished");
+    }
+
+    public IEnumerator Turn(int number) {
+        Debug.LogFormat("Start of turn {0}", number);
+        // Player turn
+        for(int i=0; i < player.drawPerTurn; i++) {
+            player.Draw();
+        }
+        yield return new WaitUntil(() => endPlayerTurn);
+        Debug.Log("Player turn finished");
+        endPlayerTurn = false;
+        player.DiscardAll();
+
+        // Enemies turn
+        foreach(Enemy enemy in enemies) {
+            yield return StartCoroutine(enemy.TakeTurn());
+        }
+        Debug.LogFormat("End of turn {0}", number);
+    }
+
+    public void EndTurn() {
+        endPlayerTurn = true;
     }
 }

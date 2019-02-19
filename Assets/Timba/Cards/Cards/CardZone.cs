@@ -36,8 +36,7 @@ namespace Timba.Cards {
 
         public Card RemoveAt(int index) {
             Card card = cards[index];
-            cards.Remove(card);
-            return card;
+            return Remove(card);            
         }
 
         public List<Card> Remove(List<Card> cardsToRemove) {

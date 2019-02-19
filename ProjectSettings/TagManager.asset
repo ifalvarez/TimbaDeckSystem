@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ModalWindows
+    uniqueID: 1749052881
+    locked: 0
