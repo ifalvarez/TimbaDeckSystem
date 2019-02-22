@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9124282048603130199}
   - component: {fileID: 9124282048603130153}
   - component: {fileID: 1398595011880678501}
+  - component: {fileID: 1148983013427838980}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -106,13 +107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    attack:
-      value: 0
-      isMinConstrained: 1
-      minValue: 0
-      isMaxConstrained: 0
-      maxValue: 0
-      timeToRegen: 0
     hp:
       value: 0
       isMinConstrained: 0
@@ -134,3 +128,50 @@ MonoBehaviour:
       isMaxConstrained: 0
       maxValue: 0
       timeToRegen: 0
+    str:
+      value: 0
+      isMinConstrained: 0
+      minValue: 0
+      isMaxConstrained: 0
+      maxValue: 0
+      timeToRegen: 0
+    dex:
+      value: 0
+      isMinConstrained: 0
+      minValue: 0
+      isMaxConstrained: 0
+      maxValue: 0
+      timeToRegen: 0
+    inte:
+      value: 0
+      isMinConstrained: 0
+      minValue: 0
+      isMaxConstrained: 0
+      maxValue: 0
+      timeToRegen: 0
+--- !u!61 &1148983013427838980
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124282048603130198}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.102338314, y: 1.3303947}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8771839, y: 2.6958876}
+  m_EdgeRadius: 0

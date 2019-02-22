@@ -6,8 +6,8 @@ using UnityEngine;
 namespace Timba.Players {
     [Serializable]
     public class Player {
-        string id;
-        string name;
+        public string id;
+        public string name;
         
     }
 }

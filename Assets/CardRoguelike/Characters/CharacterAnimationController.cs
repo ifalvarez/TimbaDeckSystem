@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Timba.Cards;
 using UnityEngine;
 
 public class CharacterAnimationController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private Animator animator;
+    private CardOwner cardOwner;
+
+    private void Awake() {
+        animator = GetComponentInChildren<Animator>();
+        cardOwner = GetComponent<CardOwner>();
+        Card.OnCardPlayed += Card_OnCardPlayed;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Card_OnCardPlayed(Card card) {
+        if(card.owner == cardOwner) {
+            animator.SetTrigger("attack");
+        }
     }
 }

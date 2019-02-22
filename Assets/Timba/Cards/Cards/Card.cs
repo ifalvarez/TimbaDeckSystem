@@ -5,6 +5,8 @@ using UnityEngine;
 namespace Timba.Cards {
     [Serializable]
     public class Card : ISerializationCallbackReceiver {
+        public CardOwner owner;
+
         public string id;
         public string name;
         [SerializeField]
