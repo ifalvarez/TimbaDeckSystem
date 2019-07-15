@@ -13,31 +13,35 @@ MonoBehaviour:
   m_Name: CardDatabase
   m_EditorClassIdentifier: 
   cards:
-  - id: 0
+  - owner: {fileID: 0}
+    id: 0
     name: Debug Card
     description: 
     targetMask: 0
     serializableBehaviours:
     - type: DebugCardBehaviour
       parameters: 
-  - id: 1
+  - owner: {fileID: 0}
+    id: 1
     name: Attack
     description: 
     targetMask: 1
     serializableBehaviours:
     - type: AttackCardBehaviour
       parameters: 06000000
-  - id: 2
+  - owner: {fileID: 0}
+    id: 2
     name: Defend
     description: 
     targetMask: 0
     serializableBehaviours:
     - type: DefendCardBehaviour
       parameters: 05000000
-  - id: 3
+  - owner: {fileID: 0}
+    id: 3
     name: Draw
     description: 
     targetMask: 0
     serializableBehaviours:
     - type: DrawCardBehaviour
-      parameters: 01000000
+      parameters: 02000000

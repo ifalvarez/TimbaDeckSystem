@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Timba.Cards;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Timba.CardRoguelike {
 
     /// <summary>
     /// Represents the whole game board and all it contains
+    /// Manages the lifecycle of one encounter
     /// This class has:
     /// - The player, that in turn contains his card zones
     /// - The enemies
@@ -16,9 +18,7 @@ namespace Timba.CardRoguelike {
     [Serializable]
     public class Board : MonoSingleton<Board> {
         public CardPlayer player;
-        public Enemy[] enemies;
-        public Relic[] relics;
-        private bool endPlayerTurn;
+        public CardPlayer enemy;
         private bool isGameFinished;
         private int turnNumber;
 
@@ -46,24 +46,22 @@ namespace Timba.CardRoguelike {
 
         public IEnumerator Turn(int number) {
             Debug.LogFormat("Start of turn {0}", number);
-            // Player turn
-            for (int i = 0; i < player.drawPerTurn; i++) {
-                player.Draw();
-            }
-            yield return new WaitUntil(() => endPlayerTurn);
-            Debug.Log("Player turn finished");
-            endPlayerTurn = false;
-            player.DiscardAll();
+            yield return StartCoroutine(player.TakeTurn());
+            yield return StartCoroutine(enemy.TakeTurn());
 
             // Enemies turn
-            foreach (Enemy enemy in enemies) {
+            /*foreach (Enemy enemy in enemies) {
                 yield return StartCoroutine(enemy.TakeTurn());
-            }
+            }*/
             Debug.LogFormat("End of turn {0}", number);
         }
 
-        public void EndTurn() {
-            endPlayerTurn = true;
+        private void Update() {
+            // Win Condition
+            bool win = enemy.characters.Where(x => x.combatant.hp > 0).Count() == 0;
+
+            // Lose Condition
+            bool lose = player.characters.Where(x => x.combatant.hp > 0).Count() == 0;
         }
     }
 }
